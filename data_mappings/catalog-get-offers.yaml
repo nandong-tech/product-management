@@ -1,0 +1,152 @@
+kind: operation
+name: get_offers
+spec_ui: https://swagger.mgmt.lotusflare.info/?urls.primaryName=%5Blua%5D%20catalog%20%E2%80%94%20CatalogClient
+spec_url: https://swagger.mgmt.lotusflare.info/swaggers/catalog/swagger/CatalogClient.yaml
+spec_title: Catalog Client API
+generated: 2026-09-09
+operation_id: POST::/api/v3/catalog/get_offers
+method: POST
+path: /api/v3/catalog/get_offers
+summary: Retrieves a list of available offers. Supports account and subscriber targets, and TMFC individual or organization targets with a Keycloak token. Offers that have ended are never returned.
+parameters:
+  - name: lf_correlation_id
+    in: header
+    required: false
+request:
+  required: true
+  schema: GetOffersRequest
+  fields:
+    - name: ids
+      type: array
+      description: Offer IDs to return. If set, other filters are not applied.
+    - name: id_type
+      type: string
+      description: How to interpret ids. One of id, short_code, external_id.
+    - name: language_code
+      type: string
+      description: Language code for localized strings.
+    - name: show_categories
+      type: boolean
+      description: If true, return the category tree and which offers belong to which categories.
+    - name: include_compatibility_rules
+      type: boolean
+      description: If true, include compatibility rules for each offer.
+    - name: include_validation_rules
+      type: boolean
+      description: If true, include validation rule IDs and data for each offer.
+    - name: include_characteristics
+      type: boolean
+      description: If true, include characteristics data for each offer.
+    - name: include_characteristics_options
+      type: boolean
+      description: If true, include characteristics option data for each offer.
+    - name: include_referenced_entities
+      type: boolean
+      description: If true, include entities referenced by a returned offer in the same result set.
+    - name: entity_spec_only_schema
+      type: boolean
+      description: If true, return entity data in Entity Specification shape only.
+    - name: timestamp
+      type: integer
+      deprecated: true
+      description: Deprecated cache version of the offer list on the caller side.
+    - name: include_constraints_metadata
+      type: boolean
+      description: If true, include constraints_metadata for each offer.
+    - name: etag
+      type: string
+      description: Cache fingerprint. If it matches the server, the response is 304.
+    - name: channel
+      type: integer
+      description: Channel identifier to filter offers by.
+    - name: offer_change
+      type: object
+      description: Filter by upgrade, downgrade, or same_grade against a subscription grade.
+    - name: filter_config
+      type: object
+      description: How to apply purchase_limit, category, and currency_code filters.
+    - name: category_ids
+      type: array
+      description: Category IDs to filter offers by.
+    - name: addressbook_id
+      type: string
+      deprecated: true
+      description: Deprecated. Use segment_filter_keywords.addressbook_id.
+    - name: provider_id
+      type: string
+      deprecated: true
+      description: Deprecated. Use segment_filter_keywords.provider_id.
+    - name: market_id
+      type: string
+      description: Market identifier to filter offers by.
+    - name: segment_filter_keywords
+      type: object
+      description: Segment filter keywords. Overrides values otherwise taken from the token.
+    - name: page_num
+      type: integer
+      description: Page number. Enables pagination.
+    - name: page_size
+      type: integer
+      description: Page size. Applied only when page_num is set.
+    - name: target_id
+      type: string
+      description: Target entity ID. Must be sent with target_type.
+    - name: target_type
+      type: number
+      description: Target entity type. Must be sent with target_id.
+    - name: context
+      type: object
+      description: Extra identifier context. Honored only for SERVICE tokens.
+    - name: options
+      type: object
+      description: Lookup options. Honored only for SERVICE tokens.
+    - name: currency_code
+      type: string
+      description: ISO 4217 currency code filter.
+    - name: country_or_territory
+      type: array
+      description: ISO 3166-1 alpha-2 codes. Offers with empty country_or_territory still match.
+    - name: operator_name
+      type: string
+      description: Operator name. Required when the caller has no token with operator_name.
+responses:
+  - status: "200"
+    description: Offers retrieved successfully.
+    schema: GetOffersResponse
+  - status: "204"
+    description: page_num is beyond the last page.
+    schema: "204"
+  - status: "304"
+    description: etag matches the current offer list fingerprint.
+    schema: "304"
+response_fields:
+  - name: module
+    type: string
+    description: Response module. CATALOG for this API.
+  - name: code
+    type: integer
+    description: Result code. 0 on success.
+  - name: server_time
+    type: integer
+    description: Server time.
+  - name: request_id
+    type: string
+    description: Request id.
+  - name: timestamp
+    type: integer
+    description: Server-side timestamp of the returned offer list, in whole seconds.
+  - name: etag
+    type: string
+    description: Fingerprint of this result set. Present when caching computed one.
+  - name: offer_by_id
+    type: object
+    description: Map of offer ID to offer entity.
+  - name: category_mapping
+    type: object
+    description: Present only when show_categories was requested.
+  - name: category_by_id
+    type: object
+    description: Referenced categories when include_referenced_entities was requested.
+  - name: product_by_id
+    type: object
+    description: Referenced products when include_referenced_entities was requested.

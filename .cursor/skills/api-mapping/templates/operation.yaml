@@ -1,0 +1,36 @@
+# Operation YAML from OpenAPI. Schema: reference/yaml-schema.md (kind: operation)
+kind: operation
+name: get_offers
+spec_ui: https://swagger.mgmt.lotusflare.info/?urls.primaryName=%5Blua%5D%20catalog%20%E2%80%94%20CatalogClient
+spec_url: https://swagger.mgmt.lotusflare.info/swaggers/catalog/swagger/CatalogClient.yaml
+spec_title: Catalog Client API
+generated: 2026-09-09
+operation_id: POST::/api/v3/catalog/get_offers
+method: POST
+path: /api/v3/catalog/get_offers
+summary: Retrieves a list of available offers for the resolved target.
+parameters:
+  - name: lf_correlation_id
+    in: header
+    required: false
+request:
+  required: true
+  schema: GetOffersRequest
+  fields:
+    - name: ids
+      type: array
+      description: Offer IDs to return. If set, other filters are not applied.
+responses:
+  - status: "200"
+    description: Offers retrieved successfully.
+    schema: GetOffersResponse
+  - status: "204"
+    description: Page number is beyond the last page.
+    schema: "204"
+  - status: "304"
+    description: etag matches the current offer list fingerprint.
+    schema: "304"
+response_fields:
+  - name: offer_by_id
+    type: object
+    description: Map of offer ID to offer entity.

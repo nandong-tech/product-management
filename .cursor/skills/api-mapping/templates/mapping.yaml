@@ -1,0 +1,9 @@
+# Mapping YAML from a PRD. Schema: reference/yaml-schema.md (kind: mapping)
+kind: mapping
+prd_id: LF-S-000
+prd_path: prebuilt_prds/LF-S-000-example.md
+feature: Example
+channels: App + Web
+api_spec: N / A
+generated: 2026-09-09
+mappings: []

@@ -1,0 +1,23 @@
+kind: mapping
+prd_id: LF-S-017
+prd_path: prebuilt_prds/LF-S-017-offer-list.md
+feature: Offer List
+channels: App + Web
+api_spec: data_mappings/catalog-get-offers.yaml
+generated: 2026-09-09
+mappings:
+  - ui: Offer list
+    endpoint: POST /api/v3/catalog/get_offers
+    field: offer_by_id
+    empty_fallback: Show "No offers available". Offer list, filter icon, quick links, and search icon are not shown.
+    notes: Map of offer ID to offer entity. Only offers available to this user are returned.
+  - ui: Filter by category / quick link (not All)
+    endpoint: POST /api/v3/catalog/get_offers
+    field: category_ids
+    empty_fallback: Offer list shows all offers available to this user under the current offer category, including subcategories. All is selected in the quick links.
+    notes: Category IDs to filter offers by. Category names are front-end code, not this field.
+  - ui: Offer category IDs
+    endpoint: POST /api/v3/catalog/get_offers
+    field: offer_by_id.{id}.categories
+    empty_fallback: Offer tile remains shown when the offer is in the list.
+    notes: IDs of the categories this offer belongs to. Used to decide which Filter by category options have offers. Labels are front-end.

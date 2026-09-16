@@ -1,0 +1,18 @@
+---
+description: Telecom operator domain — apps/websites for MNOs/MVNOs, not generic apps
+alwaysApply: true
+---
+
+# Telecom operator domain
+
+This workspace builds **apps and websites for telecom operators** (MNOs/MVNOs) and their subscribers.
+
+- Do **not** treat work as a generic consumer/SaaS app
+- Follow telecom industry language and journey conventions (SIM/eSIM activation, MSISDN login, plans/packs, self-care, prepaid/postpaid when relevant)
+- Keep PRDs **brandless / tenant-agnostic** in wording by default (do not invent brand Non-Goals)
+- Use **everyday product language** (user, button, logged in — not jargon)
+- Full shared context: `.cursor/skills/shared/telecom-domain.md` and `.cursor/skills/shared/general-context.md` (product-wide rules, e.g. generic error for API failure or unhandled error code — defined once, not repeated in PRDs)
+- **PRD folders:** `prebuilt_prds/` = catalog prebuilts (current focus, e.g. `LF-*`); `project_prds/` = project/tenant PRDs (later). `generate-prd` supports both; default target today is **prebuilt**.
+- **Skills:** users type parent names only at the start of the message: `generate-prd`, `design-prd-consistency`, `publish-prd`, `review-prd`, `relate-prds`, `api-mapping` — children are internal (see `.cursor/skills/shared/invocation.md`)
+- **API mapping:** only via `api-mapping` when asked. From spec: operation YAML. From PRD + operation YAML: compare first — match → mapping YAML, §7, and Header API Spec (link to that YAML); mismatch → raise, write nothing (do not attach). Do not auto-run after `generate-prd`.
+- **Publish:** only via `publish-prd` when asked — never auto-offer after `generate-prd`. Publish requires a prior **`review-prd` Ready** (no open Critical), and no `TBD` or empty required sections (`N / A` is accepted).

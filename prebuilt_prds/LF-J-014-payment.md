@@ -1,0 +1,71 @@
+# PRD: LF-J-014 - Payment
+
+## 1. Change Log
+
+
+| Date | Change | Owner | Rationale |
+| ---- | ------ | ----- | --------- |
+| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
+| 2026-09-10 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
+
+
+## 2. Header
+
+
+| Field                | Value         |
+| -------------------- | ------------- |
+| Feature              | Payment       |
+| Channels             | App + Web     |
+| Status (owning team) | PM — drafting |
+| Owner (PM)           | Nan Dong      |
+| Contributors         | Nan Dong      |
+| Created              | 2026-09-08    |
+| Last updated         | 2026-09-10     |
+| Figma                | N / A         |
+| Jira                 | —             |
+| API Spec             | N / A         |
+| Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |
+
+
+## 3. Central requirement + Scope
+
+### a. Central requirement
+
+The Payment journey is where the user pays for this purchase on Payment method. After **Pay**, the user sees Payment result from Shop Purchase, or Recharge Status from Wallet Recharge.
+
+### b. Goals
+
+- Pay for this purchase
+
+### c. Non-Goals
+
+N / A
+
+### d. Entry points
+
+N / A
+
+### e. Exit points
+
+N / A
+
+## 4. User Journey
+
+```mermaid
+flowchart TD
+  start([User is taken to Payment method]) --> payMethod[Payment method LF-S-026]
+  payMethod -->|Pay — from Shop Purchase| payResult[Payment result LF-S-027]
+  payMethod -->|Pay — from Wallet Recharge| rechargeStatus[Recharge Status LF-S-052]
+```
+
+## 5. Acceptance Criteria
+
+N / A
+
+## 6. Edge cases & error cases
+
+N / A
+
+## 7. Data Mapping
+
+N / A
