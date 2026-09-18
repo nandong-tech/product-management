@@ -23,6 +23,7 @@
 | Created              | 2026-08-24                                                                                                                                                                                                                                                                                        |
 | Last updated         | 2026-09-11 |
 | Figma                | N / A |
+| Confluence           | [PRD: LF-S-026 - Payment Method](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7747240017/PRD+LF-S-026+-+Payment+Method) |
 | Jira                 | —                                                                                                                                                                                                                                                                                                 |
 | API Spec             | N / A                                                                                                                                                                                                                                                                                             |
 | Links (optional)     | page template: [Basic page template (LF-P-001)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676821534/PRD+LF-P-001+-+Basic+Page+Template)<br>shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

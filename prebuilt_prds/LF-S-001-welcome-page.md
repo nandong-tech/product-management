@@ -23,6 +23,7 @@
 | Created              | 2026-07-21                                                                                                                 |
 | Last updated         | 2026-09-10  |
 | Figma                | N / A                                                                                                                      |
+| Confluence           | [PRD: LF-S-001 - Welcome Page (Guest Landing)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7630913573/PRD+LF-S-001+-+Welcome+Page+Guest+Landing) |
 | Jira                 | —                                                                                                                          |
 | API Spec             | N / A                                                                                                                      |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

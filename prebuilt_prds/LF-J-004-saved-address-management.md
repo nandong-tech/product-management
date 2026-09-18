@@ -23,6 +23,7 @@
 | Created              | 2026-08-26                 |
 | Last updated         | 2026-09-10 |
 | Figma                | N / A                      |
+| Confluence           | [PRD: LF-J-004 - Saved Address Management](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7746912482/PRD+LF-J-004+-+Saved+Address+Management) |
 | Jira                 | —                          |
 | API Spec             | N / A                      |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

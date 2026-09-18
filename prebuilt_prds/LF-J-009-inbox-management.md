@@ -22,6 +22,7 @@
 | Created              | 2026-09-03         |
 | Last updated         | 2026-09-10          |
 | Figma                | N / A              |
+| Confluence           | [PRD: LF-J-009 - Inbox Management](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7791313016/PRD+LF-J-009+-+Inbox+Management) |
 | Jira                 | —                  |
 | API Spec             | N / A              |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

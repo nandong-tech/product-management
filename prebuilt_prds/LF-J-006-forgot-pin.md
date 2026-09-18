@@ -5,6 +5,7 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
+| 2026-09-18 | Updated on Confluence | Nan Dong | OTP mermaid continues with Next |
 | 2026-09-11 | Updated from design | Nan Dong | OTP continues with Next |
 | 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
 | 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
@@ -22,8 +23,9 @@
 | Owner (PM)           | Nan Dong   |
 | Contributors         | Nan Dong   |
 | Created              | 2026-08-31 |
-| Last updated         | 2026-09-11  |
+| Last updated         | 2026-09-18  |
 | Figma                | N / A      |
+| Confluence           | [PRD: LF-J-006 - Forgot PIN](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7747403846/PRD+LF-J-006+-+Forgot+PIN) |
 | Jira                 | —          |
 | API Spec             | N / A      |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

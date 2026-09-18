@@ -26,6 +26,7 @@
 | Created              | 2026-08-10                                                                       |
 | Last updated         | 2026-09-11 |
 | Figma                | [Prebuilt Page Templates — Registration Review](https://www.figma.com/design/X3GsrESJS5Ygq67qI0GJ8D/Prebuilt-Page-Templates?node-id=84-30101&m=dev) |
+| Confluence           | [PRD: LF-S-011 - Activation — Registration Review](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676592238/PRD+LF-S-011+-+Activation+Registration+Review) |
 | Jira                 | —                                                                                |
 | API Spec             | N / A                                                                            |
 | Links (optional)     | page template: [Basic page template (LF-P-001)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676821534/PRD+LF-P-001+-+Basic+Page+Template)<br>shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

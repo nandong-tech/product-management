@@ -23,6 +23,7 @@
 | Created              | 2026-08-26                                                                       |
 | Last updated         | 2026-09-10 |
 | Figma                | N / A |
+| Confluence           | [PRD: LF-S-028 - Shop Landing Page](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7747633660/PRD+LF-S-028+-+Shop+Landing+Page) |
 | Jira                 | —                                                                                |
 | API Spec             | N / A                                                                            |
 | Links (optional)     | page template: [Basic page template (no back) (LF-P-002)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676592216/PRD+LF-P-002+-+Basic+Page+Template+No+Back)<br>shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

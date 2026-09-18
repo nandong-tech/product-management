@@ -21,7 +21,8 @@
 | Contributors         | Nan Dong       |
 | Created              | 2026-09-01     |
 | Last updated         | 2026-09-10      |
-| Figma                | TBD            |
+| Figma                | N / A |
+| Confluence           | [PRD: LF-S-033 - Dashboard](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7791313037/PRD+LF-S-033+-+Dashboard) |
 | Jira                 | —              |
 | API Spec             | N / A          |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

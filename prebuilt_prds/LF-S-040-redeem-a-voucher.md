@@ -22,6 +22,7 @@
 | Created              | 2026-09-03                                                                       |
 | Last updated         | 2026-09-10                                                                        |
 | Figma                | N / A |
+| Confluence           | [PRD: LF-S-040 - Redeem a Voucher](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7787085845/PRD+LF-S-040+-+Redeem+a+Voucher) |
 | Jira                 | —                                                                                |
 | API Spec             | N / A                                                                            |
 | Links (optional)     | page template: [Basic page template (LF-P-001)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676821534/PRD+LF-P-001+-+Basic+Page+Template)<br>shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

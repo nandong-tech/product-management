@@ -22,6 +22,7 @@
 | Created              | 2026-08-11                                                                                         |
 | Last updated         | 2026-09-11 |
 | Figma                | N / A |
+| Confluence           | [PRD: LF-S-013 - Verify Email](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676723264/PRD+LF-S-013+-+Verify+Email) |
 | Jira                 | —                                                                                                  |
 | API Spec             | N / A                                                                                              |
 | Links (optional)     | page template: [Basic page template (no back) (LF-P-002)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676592216/PRD+LF-P-002+-+Basic+Page+Template+No+Back)<br>shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

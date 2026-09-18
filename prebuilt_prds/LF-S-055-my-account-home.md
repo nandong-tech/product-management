@@ -15,8 +15,9 @@
 | Owner (PM)           | Nan Dong       |
 | Contributors         | Nan Dong       |
 | Created              | 2026-09-15     |
-| Last updated         | 2026-09-15     |
-| Figma                | TBD            |
+| Last updated         | 2026-09-18     |
+| Figma                | N / A |
+| Confluence           | [PRD: LF-S-055 - My Account Home](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7810941054/PRD+LF-S-055+-+My+Account+Home) |
 | Jira                 | —              |
 | API Spec             | N / A          |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |
@@ -57,7 +58,7 @@ N / A
 | AC-03 | The My Account Home screen is shown | The user selects **User Profile**        | The user is taken to User Profile (PRD TBD)                                                                                                                                                          |
 | AC-04 | The My Account Home screen is shown | The user selects **Update PIN**          | The user is taken to Reset PIN (LF-J-007)                                                                                                                                                            |
 | AC-05 | The My Account Home screen is shown | The user selects **Saved Addresses**     | The user is taken to Saved Address Management (LF-J-004)                                                                                                                                             |
-| AC-06 | The My Account Home screen is shown | The user selects **Transaction History** | The user is taken to Transaction History (PRD TBD)                                                                                                                                                   |
+| AC-06 | The My Account Home screen is shown | The user selects **Transaction History** | The user is taken to Transaction History (LF-J-015)                                                                                                                                                  |
 | AC-07 | The My Account Home screen is shown | The user selects **SIM Swap**            | The user is taken to SIM Swap (PRD TBD)                                                                                                                                                              |
 | AC-08 | The My Account Home screen is shown | The user selects **Port in**             | The user is taken to Port in (PRD TBD)                                                                                                                                                               |
 

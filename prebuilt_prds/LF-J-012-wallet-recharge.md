@@ -22,6 +22,7 @@
 | Created              | 2026-09-08       |
 | Last updated         | 2026-09-10        |
 | Figma                | N / A            |
+| Confluence           | [PRD: LF-J-012 - Wallet Recharge](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7791902787/PRD+LF-J-012+-+Wallet+Recharge) |
 | Jira                 | —                |
 | API Spec             | N / A            |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

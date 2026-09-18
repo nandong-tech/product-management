@@ -28,6 +28,7 @@
 | Created              | 2026-08-11     |
 | Last updated         | 2026-09-11  |
 | Figma                | [Prebuilt Page Templates — Create Account](https://www.figma.com/design/X3GsrESJS5Ygq67qI0GJ8D/Prebuilt-Page-Templates?node-id=84-32299&m=dev) |
+| Confluence           | [PRD: LF-J-001 - Create Account](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676592193/PRD+LF-J-001+-+Create+Account) |
 | Jira                 | —              |
 | API Spec             | N / A          |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

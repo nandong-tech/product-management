@@ -24,6 +24,7 @@
 | Created              | 2026-07-23    |
 | Last updated         | 2026-09-10  |
 | Figma                | N / A         |
+| Confluence           | [PRD: LF-S-002 - Header](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7629832492/PRD+LF-S-002+-+Header) |
 | Jira                 | —             |
 | API Spec             | N / A         |
 | Links (optional)     | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |
