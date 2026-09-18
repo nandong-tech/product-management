@@ -96,6 +96,14 @@ See [authoring-rules.md](reference/authoring-rules.md) §2b. Summary: **`LF-*` t
 
 See [authoring-rules.md](reference/authoring-rules.md) §3. Summary: Header Figma is attached **separately**; never copy generation input URL/screenshot/export; leave `TBD` until attached.
 
+### Header `Confluence`
+
+See [authoring-rules.md](reference/authoring-rules.md) §3a. Summary: row **below Figma**; this PRD’s Confluence page. Leave `TBD` on generate. `publish-prd` writes the URL after the page exists.
+
+### Header `Jira`
+
+See [authoring-rules.md](reference/authoring-rules.md) §3aa. Summary: row **below Confluence**; leave `—` unless the user gives a ticket. Do not split into PRD / Design / Implementation.
+
 ### Entry points & Exit points (§3d–e)
 
 See [authoring-rules.md](reference/authoring-rules.md) §6. Summary (aligned with [PRD Template](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7539851327/PRD+Template)):
@@ -240,7 +248,7 @@ Details: [reference/entry-modes.md](reference/entry-modes.md).
    - One-sentence central requirement
 6. **§3d–e:** Page PRD → **`N / A`**. Journey PRD → **`N / A`** when mermaid shows start/end; otherwise from brief/design or ask — never invent from CTAs alone.
 7. **Ignore-as-absent controls:** If the user says to ignore a control (e.g. an unclear icon-only button), treat it as **not on the screen** — omit from journey, UI inventory, Non-Goals, ACs, and edge cases. Do **not** list it as out of scope.
-8. **Header `Figma`:** Do **not** copy the user’s generation input (Figma URL, screenshot, or export used for Mode B) into Header → Figma. That field is for a **separately attached** team-viewable design link. Leave it empty / `TBD` unless the user explicitly provides a distinct Header Figma attachment.
+8. **Header `Figma`:** Do **not** copy the user’s generation input (Figma URL, screenshot, or export used for Mode B) into Header → Figma. That field is for a **separately attached** team-viewable design link. Leave it empty / `TBD` unless the user explicitly provides a distinct Header Figma attachment. **Header `Confluence`:** leave `TBD`.
 9. Draft §1–4 after §3d–e rules are applied; mark remaining assumptions clearly where still ambiguous
 10. Continue at **Shared pipeline** step 3 (pass full UI inventory to children; generation design input is for inventory only, not Header Figma)
 
@@ -350,6 +358,7 @@ Assemble using [templates/prd-output.md](templates/prd-output.md):
 | Design ↔ PRD (Mode B) | Screens/CTAs appear in journey (**journey**) or page UI inventory + ACs (**page**) |
 | §3a–c discipline | Central ≠ goals ≠ non-goals; no repeated In/Out story across a–c; Non-Goals not invented; **Goals = what user accomplishes on screen** (not per-button actions — those in §5); **Non-Goals = on this page/journey out-of-scope only — no other pages** |
 | Header Figma | Not filled from generation input |
+| Header Confluence | `TBD` until `publish-prd` |
 | Ignore-as-absent | Ignored controls absent from Non-Goals, ACs, ECs, mapping |
 | Publish readiness | No `TBD` / empty required cells; `N / A` OK; Header includes Channels |
 | Channels | Header → Channels is `App` or `App + Web`; ACs/ECs cover that scope; platforms named in §5–6 only when they differ |
@@ -415,6 +424,7 @@ After saving a new PRD (required for **Mode D**; recommended for A/B/C drafts):
 - [ ] Generation target resolved (prebuilt default now; project when asked)
 - [ ] Saved under `prebuilt_prds/` (prebuilt) or `project_prds/` (project)
 - [ ] Mode B: Header `Figma` is empty/TBD or a **separately attached** link — not the same URL/file used only as generation input
+- [ ] Header `Confluence` is `TBD` (filled later by `publish-prd`)
 - [ ] Mode C: §1 Change Log left empty (publish-prd and design-prd-consistency own Change Log rows)
 - [ ] Mode D (project only): seeded from `prebuilt_prds/`; new file under `project_prds/`; prebuilt untouched; invited further changes
 - [ ] Did **not** offer or run Confluence publish (that is `publish-prd`)

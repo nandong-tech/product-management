@@ -346,6 +346,23 @@ Page title is **not from an API** unless the PRD **specifically** says the page 
 
 ---
 
+## 3a. Header → Confluence (this PRD’s page)
+
+- Header **Confluence** sits **below Figma**. It is **this PRD’s** Confluence page URL.
+- `generate-prd` leaves `TBD`.
+- `publish-prd` writes `[PRD: <H1 title>](<webUrl>)` after the page exists (create, then update so the wiki body has the link). If the cell already has the same page id, leave it. If empty/`TBD`/`N / A`/missing, or the page id changed, write the current URL.
+- Do **not** put this PRD’s own page URL in Header → Links.
+
+## 3aa. Header → Jira
+
+- Header **Jira** sits **below Confluence**.
+- `generate-prd` writes `—` unless the user gives a ticket.
+- Do **not** write a PRD / Design / Implementation list. Ticket linking by slot can be added later.
+- `publish-prd` does **not** fill this field from the AIDR board.
+- Do **not** put tickets in Header → Links.
+
+---
+
 ## 3b. Header → Contributors (PRD authors only)
 
 **Contributors** = who has **authored or edited this PRD document**, not who worked on design/eng for the feature.
@@ -365,7 +382,7 @@ Page title is **not from an API** unless the PRD **specifically** says the page 
 - Header Links must **never** point at local files (`.md`, `.cursor/`, relative repo paths).
 - **Do not** include any other Header Links — not this PRD’s own Confluence URL, tickets, related PRDs, or “see also”. Do **not** copy AC/EC hand-off destinations into Header Links. Do **not** ask the user whether to add those.
 - Do **not** put `pending-prd-links.md` / “Pending destinations” in Header Links. Track unfinished hand-offs only in `prebuilt_prds/pending-prd-links.md` (writer reminder); in the PRD body use `(PRD TBD)` on the named destination where needed (AC / EC hand-off; §3e only when filled).
-- `publish-prd` returns this PRD’s Confluence URL in chat only. Do **not** write this PRD’s own page URL into Header Links. Find an existing Confluence page from §1 Change Log or title / PRD id search. Before writing the body, rewrite any leftover local-file Header Links to the canonical Confluence URLs.
+- `publish-prd` writes this PRD’s Confluence URL into Header → **Confluence** and returns it in chat. Do **not** write this PRD’s own page URL into Header Links. Find an existing Confluence page from Header → Confluence, §1 Change Log, or title / PRD id search. Before writing the body, rewrite any leftover local-file Header Links to the canonical Confluence URLs.
 
 ---
 
@@ -565,6 +582,8 @@ Full steps: [entry-modes.md](entry-modes.md) + parent SKILL generation-target se
 - [ ] §5 / §6 rows are in a human-readable order; new or updated ACs/ECs are inserted next to related rows and then renumbered (§2n)
 - [ ] Long multi-outcome Then / Expected behavior use bullets when hard to read as one sentence — each bullet on its own line (`- …<br>- …`, never jammed `- … - …`)
 - [ ] Header Figma not copied from generation input
+- [ ] Header Confluence is `TBD` on generate; `publish-prd` fills the page URL after the page exists
+- [ ] Header Jira is `—` on generate unless the user gave a ticket
 - [ ] Contributors = PM(s) who authored/edited this PRD (append on later PM edits; not Design/Eng roles)
 - [ ] Header Links always include shared context; plus page template when used (§2g); extra Header Links only if the user explicitly asked
 - [ ] Ignore-as-absent controls truly absent (not in Non-Goals)
@@ -578,7 +597,7 @@ Full steps: [entry-modes.md](entry-modes.md) + parent SKILL generation-target se
 - [ ] No design designations unless purposely included (§2e) — business rules only; no UI control visual effects (checkbox checked / empty / dash, hover, highlight)
 - [ ] Cross-PRD hand-offs include PRD IDs (`Welcome (LF-S-001)`) or `(PRD TBD)` when the destination is not written yet. Journey destinations name the **journey PRD** only, not a screen inside that journey
 - [ ] Page PRD: ACs/ECs self-contained on this page/journey (§2f) — no other-page expansion
-- [ ] Header Links contain **only** shared context and, when used, `page template: <link>` — both as **Confluence** URLs, never local files; not this PRD’s own page URL; no extra links
+- [ ] Header Links contain **only** shared context and, when used, `page template: <link>` — both as **Confluence** URLs, never local files; this PRD’s own page URL is Header → Confluence, not Links; no extra links
 - [ ] If screen uses a page template (§2g): template **only** in Header Links as `page template: <link>` (nowhere else); no restated back ACs; no invented chrome Non-Goals
 - [ ] Generation target resolved — prebuilt (default now) vs project (§8b); Mode D only for project
 - [ ] §1 Change Log empty on generate-prd; rows only via publish-prd or design-prd-consistency

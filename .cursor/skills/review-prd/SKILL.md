@@ -4,8 +4,10 @@ description: >-
   Parent skill (user entry). Type "review-prd" at the start of the message.
   Review AIDR PRDs for clarity, completeness, testability, telecom-domain
   alignment, and conflicts with other existing PRDs (duplicate coverage,
-  contradictions, and related clash scenarios). Required before publish-prd
-  (Verdict Ready, no open Critical).
+  contradictions, and related clash scenarios). Optional during publish-prd:
+  that skill asks once whether to run review; if the user says no, skip review
+  for every PRD in the publish run and fill Header Figma / API Spec TBD with
+  N / A. If they say yes, Verdict Ready and no open Critical are required.
 ---
 
 # Review PRD
@@ -16,13 +18,13 @@ description: >-
 
 **Shared general context:** [../shared/general-context.md](../shared/general-context.md) — product-wide rules; do not flag missing generic-error ECs in a PRD (API failure / unhandled error code belong only in general context).
 
-**Publish prerequisite:** `publish-prd` will **not** publish to Confluence unless this skill has completed for that PRD with Verdict **Ready** and no open Critical findings. Keep improving this skill’s checklist over time; the publish gate still requires running the current review.
+**Publish:** `publish-prd` **asks once** whether to run this skill. If the user says **no**, skip review for **every** PRD in that publish run. If **yes**, publish continues a PRD only when Verdict is **Ready** and there are no open Critical findings. Keep improving this skill’s checklist over time.
 
 ## When to use
 
 - User shares a PRD path or paste and asks for review
 - User wants a gap analysis or readiness check before engineering kickoff
-- User is preparing to `publish-prd` (review must pass first)
+- User is preparing to `publish-prd` and chose **Yes** at the review ask
 
 ## Instructions
 
@@ -74,7 +76,7 @@ After the review write-up, if anything still needs a PM decision or a PRD edit, 
 4. When they answer: apply the edit to **this** PRD if it is decided (peers only if they ask). Confirm in one or two sentences.
 5. Then start the **next** open item the same way.
 
-**Stop the walkthrough** when Critical and Important are resolved and no Open questions remain. Then say what is left (e.g. Nice-to-have, pending Payment PRD) and that a re-review is needed before `publish-prd`.
+**Stop the walkthrough** when Critical and Important are resolved and no Open questions remain. Then say what is left (e.g. Nice-to-have, pending Payment PRD). If they will publish and chose review **Yes**, a Ready verdict is needed before `publish-prd` continues.
 
 ## Review output format
 
@@ -116,11 +118,13 @@ Ready / Needs revision / Blocked — one sentence why.
 
 ### Verdict meanings (for publish)
 
-| Verdict | May `publish-prd`? |
+| Verdict | If the user chose **Yes** on the publish review ask |
 |---------|-------------------|
-| **Ready** | Yes — after readiness gate also passes (no TBD / empty sections; `N / A` OK) |
-| **Needs revision** | No — fix and re-review |
-| **Blocked** | No — resolve blockers and re-review |
+| **Ready** | Continue publish — after readiness gate also passes (no TBD / empty sections; `N / A` OK) |
+| **Needs revision** | Do not publish until fix and re-review |
+| **Blocked** | Do not publish until blockers are resolved and re-reviewed |
+
+If the user chose **No** on the publish review ask, this verdict table does not apply.
 
 ## Additional resources
 
@@ -129,6 +133,6 @@ Ready / Needs revision / Blocked — one sentence why.
 - Pending PRD links: [`prebuilt_prds/pending-prd-links.md`](../../../prebuilt_prds/pending-prd-links.md)
 - Authoring rules (AIDR): [../generate-prd/reference/authoring-rules.md](../generate-prd/reference/authoring-rules.md)
 - Relate map (optional aid): [../relate-prds/SKILL.md](../relate-prds/SKILL.md)
-- Publish skill (requires this review): [../publish-prd/SKILL.md](../publish-prd/SKILL.md)
+- Publish skill (asks whether to run this review): [../publish-prd/SKILL.md](../publish-prd/SKILL.md)
 - Shared domain (telecom): [../shared/telecom-domain.md](../shared/telecom-domain.md)
 - Examples: [examples/](examples/)

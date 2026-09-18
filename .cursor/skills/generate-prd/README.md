@@ -37,7 +37,7 @@ Re-run `generate-prd` against a test case (e.g. Welcome page) only when you want
 | Parent | `generate-prd` | Draft §1–4, stitch, save to `prebuilt_prds/` (prebuilt) or `project_prds/` (project) |
 | Internal children | under `generate-prd/children/` | §5–6 and §7 |
 | Parent | `design-prd-consistency` | Existing PRD vs Figma/design; write or correct Header Figma; accept/reject one by one; apply with these authoring rules; one §1 `Updated from design` row |
-| Parent | `publish-prd` | Confluence publish only when user asks; requires `review-prd` Ready; blocks on TBD or empty sections (`N / A` OK) |
+| Parent | `publish-prd` | No path: every `prebuilt_prds/` AIDR PRD vs Confluence, one by one. Named files only those. Asks `review-prd` once (No → skip all reviews; Header Figma / API Spec TBD → N / A). Writes local only if still different; fills Header → Confluence; does not fill Header → Jira; then commits and pushes. Product TBD still blocks that PRD (`N / A` OK; Header Confluence TBD filled here) |
 
 ## Mandatory rules (start here)
 

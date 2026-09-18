@@ -23,6 +23,7 @@
 | Created | <YYYY-MM-DD> |
 | Last updated | <YYYY-MM-DD> |
 | Figma | <separately attached team design link — not generation input; leave TBD if none> |
+| Confluence | <this PRD’s Confluence page URL after publish-prd; TBD until first publish> |
 | Jira | <tickets> |
 | API Spec | <N / A until api-mapping attaches the operation YAML on match> |
 | Links (optional) | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |

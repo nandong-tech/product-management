@@ -2,13 +2,22 @@
 name: publish-prd
 description: >-
   Parent skill (user entry). Type "publish-prd" at the start of the message.
-  Publish an existing local AIDR PRD from prebuilt_prds/ or project_prds/ to
-  Confluence. Only runs when
-  the user asks — does not run after generate-prd. Requires a prior successful
-  review-prd (Ready, no open Critical). Also blocks publish if TBD or empty
-  required sections remain (`N / A` is accepted). Always ask which Confluence
-  space (and optional parent) before creating or updating a page. If already
-  published, updates that page as a new Confluence version (never a duplicate).
+  With no file named, walks every AIDR PRD under prebuilt_prds/ against
+  Confluence, one by one. Named paths publish only those files. Asks once
+  whether to run review-prd; No skips review for every PRD in the run and
+  fills Header Figma / API Spec TBD with N / A without asking again.
+  Compares each PRD to the Confluence page, walks content gaps and comments
+  (page-level and inline) one by one, applies accepted wiki edits to local,
+  and Resolve closes the comment on Confluence. If Change Log or Last updated
+  differs, uses the most latest without asking. Then writes local to
+  Confluence only when still different. Then commits those local PRD files
+  and pushes if origin exists. Fills Header → Confluence with this PRD’s page
+  URL on first publish, and updates that field only when the page id changed.
+  Does not fill Header → Jira from the AIDR board.
+  Does not use confluence-mapping.json. Does not publish from git. Does not run
+  after generate-prd unless the user typed publish-prd. Blocks on product TBD
+  or empty required sections (N / A is accepted; Header Confluence TBD is
+  filled here).
 ---
 
 # Publish PRD (parent)
@@ -19,47 +28,66 @@ description: >-
 
 **Shared general context:** [../shared/general-context.md](../shared/general-context.md) — product-wide rules.
 
-Publish an existing PRD under `prebuilt_prds/` or `project_prds/` to Confluence. Do **not** invent a new PRD here — use `generate-prd` for that.
+Publish existing PRDs under `prebuilt_prds/` or `project_prds/` to Confluence. Confluence is updated **from local PRDs** after the user has taken wiki edits and comments they want. Do **not** invent a new PRD here — use `generate-prd`.
 
 **Never** publish unless the user invoked this skill (or explicitly asked to publish in a way that clearly means this skill). Do **not** offer publish as a follow-up after `generate-prd`.
 
-**Prerequisites (both required):**
+**Do not** read or write `prebuilt_prds/confluence-mapping.json`. **Do not** publish because of a git commit or push. **Do not** update Confluence from git. After Confluence work in this same run, **do** commit the touched local PRDs and push if `origin` exists.
 
-1. **`review-prd` passed** for this file — Verdict **Ready**, no open Critical findings (see Review gate below)
-2. **Readiness gate** — no `TBD` and no empty required sections (`N / A` is valid and does **not** block)
+**Always required:** readiness gate — no product `TBD` and no empty required sections (`N / A` is valid and does **not** block). Header → Confluence `TBD` / empty does **not** block — this skill fills it. Header → Jira `—` / `TBD` / empty does **not** block and is **not** filled from the AIDR board. After skip-review, Header Figma / API Spec `TBD` are filled with `N / A` (do not ask).
+
+**Review is optional:** ask **once** per run whether to run `review-prd`. If the user says no, skip review for **every** PRD in the run. Do **not** ask again.
 
 ## When to use
 
-- User starts with `publish-prd …`
-- User names a file under `prebuilt_prds/` (or the latest PRD in the conversation) and wants it on Confluence
+- User starts with `publish-prd` and no path — **catalog run**: every AIDR PRD under `prebuilt_prds/`
+- User names one or more files under `prebuilt_prds/` or `project_prds/` — publish **only** those
+- User names `project_prds/` — every AIDR PRD in that folder
 
 ## Workflow
 
 ```
 Publish Progress:
-- [ ] 1. Identify local PRD file
-- [ ] 2. Review gate — review-prd Ready (block if missing / not Ready)
-- [ ] 3. Readiness gate — no TBD / no empty required sections (`N / A` OK; empty Change Log OK until first publish)
-- [ ] 4. Ask where to publish (space + optional parent) — required; if already published, confirm **update** of existing page
-- [ ] 5. Authenticate Atlassian MCP if needed
-- [ ] 6. Resolve existing Confluence page (mapping file → Change Log / title / PRD id) — update version if found; create only if none
-- [ ] 7. Append §1 Change Log row for this publish (local file)
-- [ ] 8. Create **or update** Confluence page (never duplicate)
-- [ ] 9. Sync `prebuilt_prds/confluence-mapping.json` (add or correct page id only; skip if unchanged)
-- [ ] 10. Rewrite Header Links to Confluence URLs (never local files); return this PRD’s URL in chat — do **not** write this PRD’s own page URL into Header Links
+- [ ] 1. Identify local PRD file(s) — no path → all `prebuilt_prds/` AIDR PRDs; named paths → those files only
+- [ ] 2. Ask review-prd **once** — Yes: review each PRD (Ready, no open Critical) before that PRD continues; No: skip review for **all** PRDs in the run; auto-fill Header Figma / API Spec `TBD` → `N / A`; do not ask again
+- [ ] 3. Readiness gate per PRD — no product TBD / no empty required sections (`N / A` OK; empty Change Log OK until first publish; Header Confluence TBD OK; Header Jira `—` / TBD OK; after skip-review, Header Figma / API Spec `N / A` is already written)
+- [ ] 4. Authenticate Atlassian MCP if needed
+- [ ] 5. Resolve existing Confluence page (Header → Confluence URL, search title / PRD id, or URL the user pastes) — do not use confluence-mapping.json
+- [ ] 6. Child: compare local vs Confluence (body + page-level and inline comments); Change Log / Last updated → most latest without asking; walk other gaps one by one; apply accepted wiki edits to local; resolve closes the comment on Confluence
+- [ ] 7. Destination: catalog / multi-file run — ask **once** when the first create needs a space/parent; reuse for later creates. Existing page → update (no per-page confirm on a catalog run). Named single file, first create → ask; existing page → confirm update
+- [ ] 8. If local still differs from Confluence: append §1 Change Log row, rewrite Header Links, create or update the page, then fill Header → Confluence
+- [ ] 9. If local matches Confluence: skip the content write — still fill Header → Confluence on local **and** wiki if empty, TBD, missing, or the page id changed
+- [ ] 10. Header → Confluence must be a real URL for this page on local and wiki before finishing that PRD. Header → Jira stays `—` unless the user gave a ticket. Return the Confluence URL in chat. Do not write this PRD’s own page URL into Header Links
+- [ ] 11. Child: commit the local PRD files this run touched; push if origin exists (do not publish from git)
 ```
+
+Finish one PRD (steps 3–10) before the next. Do **not** republish content that matches Confluence after the compare, except a Header → Confluence fill when that cell is empty/`TBD`/missing on local **or wiki**, or the page id changed. Step 11 runs **once** at the end of the run, in the same `publish-prd` invocation.
 
 ### 1. Identify local PRD
 
-- Use the path the user gave, or the PRD just discussed
-- If unclear, ask which `prebuilt_prds/….md` file
-- Read the file; body must be clean AIDR markdown (no instruction blockquotes)
+**No path** (`publish-prd` alone): **catalog run**. Load **every** AIDR PRD under `prebuilt_prds/` — files matching `<PROJECT>-<TYPE>-<NNN>-*.md` (e.g. `LF-S-001-welcome-page.md`). Sort by filename. Do **not** limit to the last PRD in the conversation.
 
-### 2. Review gate (required — before readiness / Confluence)
+**Exclude:** `pending-prd-links.md`, `reviews/`, `README.md`, `confluence-mapping.json`, and any non-PRD markdown.
 
-Publishing requires a completed **`review-prd`** for this PRD.
+**Named path(s):** only those files (or every AIDR PRD under `project_prds/` if they named that folder).
 
-**Pass when all are true:**
+Treat each file on its own through compare and publish. Read the file; body must be clean AIDR markdown (no instruction blockquotes).
+
+### 2. Ask review-prd (required ask; review itself is optional)
+
+Ask **once per publish run** (not once per file):
+
+> Do you want to run `review-prd` before publishing?
+> - **Yes** — run review first for each PRD; continue that PRD only if Verdict is **Ready** and there are no open Critical findings
+> - **No** — skip review for **every** PRD in this run and continue publish
+
+Wait for the answer. **Do not** ask this again later in the run.
+
+**If Yes:**
+
+Run [../review-prd/SKILL.md](../review-prd/SKILL.md) for each PRD in this run.
+
+Pass only when all are true:
 
 | Check | Pass |
 |-------|------|
@@ -73,16 +101,24 @@ Publishing requires a completed **`review-prd`** for this PRD.
 2. In **this** conversation: a full `review-prd` output for this file with Verdict **Ready** and empty/resolved Critical, **or**
 3. User pastes a prior Ready review for this file and confirms nothing material changed since
 
-**If the gate fails:**
+If the user chose Yes and review is missing, not Ready, or has open Critical:
 
-1. **Stop** — do not publish and do not ask for Confluence space yet
-2. Tell the user review is a prerequisite of publish
-3. Ask them to run `review-prd <path>` (or offer to run the review skill now)
-4. If review returns Needs revision / Blocked / open Critical: ask them to fix the PRD and re-review; only continue publish after a new **Ready** result
+1. **Stop** — do not publish
+2. Ask them to fix the PRD and re-review
+3. Only continue publish after a new **Ready** result
 
-Do **not** treat “looks fine to me” or an unverified claim as a passed review. Do **not** skip this gate because `review-prd` is still being refined — run whatever checklist that skill currently has.
+**If No:** skip review for **all** PRDs in this run. Do **not** stop. Do **not** ask again. Then auto-fill Header placeholders (below) and continue at the readiness gate.
 
-Note: `review-prd` may still be evolving; the publish gate still requires invoking it and getting **Ready**.
+**Skip-review auto-fill (do not ask):** On each PRD, write these before the gate. Do **not** add a Change Log row for this fill alone.
+
+| Field | If | Write |
+|-------|-----|-------|
+| Header → **Figma** | empty, `TBD`, or missing | `N / A` |
+| Header → **API Spec** | empty, `TBD`, or missing | `N / A` |
+
+Leave a real Figma URL or an attached API Spec YAML link unchanged. Do **not** auto-fill product body `TBD` (e.g. `TBD — confirm with PM`, `(PRD TBD)` hand-offs). Those still block.
+
+Do **not** treat “looks fine to me” as a passed review when the user chose **Yes**.
 
 ### 3. Readiness gate (required — before Confluence)
 
@@ -91,6 +127,9 @@ Scan the full PRD. **Do not publish** if any required content is still unfinishe
 **Accepted (does not block):**
 
 - **`N / A`** (also `N/A`) anywhere a field or section is intentionally not applicable — e.g. Header Figma, API Spec, §4 User Journey for page PRDs, **§3d Entry / §3e Exit** for page PRDs or journeys whose mermaid already shows start/end, a mapping row, or an exit that does not apply
+- **Header → Confluence** empty, `TBD`, `N / A`, or missing — this skill fills that field on publish
+- **Header → Jira** empty, `TBD`, `—`, `N / A`, or missing — leave as-is (`—` is the default). Do **not** fill from the AIDR board. Ticket linking by slot can be added later.
+- After skip-review: Header → **Figma** and Header → **API Spec** that this skill already set to `N / A`
 - Filled tables / mermaid / concrete values
 
 **Blocks publish:**
@@ -99,29 +138,51 @@ Scan the full PRD. **Do not publish** if any required content is still unfinishe
 |--------|----------|
 | Explicit TBD | `TBD`, `TBD — confirm with PM`, `TODO`, `?` used as a placeholder |
 | Empty required sections | Blank §3d/§3e tables; blank §4 (neither mermaid nor `N / A`); empty §5 / §6 / §7 tables |
-| Empty required Header cells | Feature, Status, Owner, Created, Last updated left blank |
+| Empty required Header cells | Feature, Status, Owner, Created, Last updated left blank (Header Confluence and Header Jira may be empty/`TBD`/`—`) |
 | Empty required row cells | Entry/exit name or In/Out blank; AC Given/When/Then blank; EC columns blank |
 
-**Does not block:** empty §1 Change Log (headers only, no rows) — publish rows are added in step 7. Existing `Updated from design` rows from `design-prd-consistency` do not block.
+**Does not block:** empty §1 Change Log (headers only, no rows) — publish rows are added in step 8. Existing `Updated from design` rows from `design-prd-consistency` do not block.
 
 If the gate fails:
 
-1. **Stop** — do not ask for Confluence space yet (or do not create/update the page)
+1. **Stop** — do not create/update the page
 2. List each blocking item (section + what’s wrong: TBD vs empty)
 3. Ask the user to **finish** those parts or replace intentional gaps with **`N / A`**
 4. Only continue after the file no longer contains blocking TBD/empty items
 
-Do **not** publish while any `TBD` remains. Prefer **`N / A`** over TBD when something is intentionally out of scope or not applicable.
+Do **not** publish while any **product** `TBD` remains. **Except:** Header → Confluence (this skill fills that cell); Header → Jira (`—` / `TBD` / empty does not block; this skill does **not** fill it); after skip-review, Header Figma / API Spec already written as `N / A`. Prefer **`N / A`** over TBD when something is intentionally out of scope — after skip-review, write those Header cells yourself; do **not** ask.
 
-**Order:** Review gate → Readiness gate → destination ask. A Ready review does **not** waive TBD or empty-section readiness.
+A skipped review does **not** waive leftover **product** TBD or empty-section readiness. It **does** waive asking about Header Figma / API Spec.
 
-### 4. Ask where to publish (required)
+### 4–6. Find page, then compare
 
-Always ask before writing to Confluence (even if config has a mapping) — **only after** review + readiness gates pass.
+Authenticate Atlassian MCP if needed (`mcp_auth`).
 
-**If Change Log shows a prior publish** (or search finds the same PRD title/id): ask to **confirm updating that page as a new version** (space/parent only if moving). Do **not** offer creating a separate page unless the user explicitly wants a fork.
+Find the Confluence page in this order; stop at the first usable match:
 
-Otherwise ask:
+1. **URL the user pastes**
+2. **Header → Confluence** when it is a real page URL (not empty / `TBD` / `N / A`)
+3. **Search** (PRD title and/or PRD id such as `LF-S-055`) in the space the user is using
+
+Change Log rows that say First publish / Updated on Confluence only mean it was published before — still **search** if Header → Confluence is empty; do not invent a page id.
+
+**Do not** open or update `prebuilt_prds/confluence-mapping.json`.
+
+Then follow the internal child [children/compare-confluence/SKILL.md](children/compare-confluence/SKILL.md):
+
+- Fetch body, **page-level** comments, and **inline** comments
+- Compare AIDR **content**, not HTML vs markdown markup
+- If §1 Change Log or Header → Last updated differs: use the **most latest** on local **without asking** (later Last updated date; Change Log table with the later newest row Date; equal newest Date → keep local rows and add any extra Confluence rows)
+- Walk each **other** content gap and each **open** comment **one by one** (both kinds)
+- Apply **take Confluence** / **Resolve** to the **local** file first; **Resolve** also **closes** the comment on Confluence (does not delete it)
+- If there is no Confluence page, skip compare (first publish)
+
+### 7. Ask where to publish
+
+**First publish (no page found):**
+
+- **Catalog / multi-file run:** ask **once** the first time a create needs a destination. Reuse that space/parent for every later create in this run. Do **not** ask again per file.
+- **Named single file:** ask before creating.
 
 > Where should I publish this PRD on Confluence?
 > - Space name or key
@@ -130,25 +191,30 @@ Otherwise ask:
 
 Suggest rows from [config/confluence-projects.md](config/confluence-projects.md) if helpful. Wait for the user’s choice — never default to personal space or auto-pick.
 
-### 5–10. Publish
+**Page already found:**
 
-Follow [reference/publish-to-confluence.md](reference/publish-to-confluence.md). Re-check review + readiness if the file changed since the gates.
+- **Catalog / multi-file run:** update that existing page as a new version. Do **not** confirm each page.
+- **Named single file:** confirm **update of that existing page** (space/parent only if moving).
 
-**Republish rule:** If the PRD was published before (mapping file, prior Change Log publish row, or same title/PRD id in the space), use **`updateConfluencePage`** so Confluence keeps **one page with a new version**. Never create a duplicate page for the same PRD. Header Links stay page template + shared context only, and those links must be **Confluence page URLs** — never local `.md` / `.cursor/` paths. Rewrite any leftover local-file Header Links using [config/confluence-projects.md](config/confluence-projects.md) before writing the body. Do **not** put this PRD’s own Confluence URL into Header Links.
+Do **not** offer creating a separate page unless the user explicitly wants a fork.
 
-**Confluence mapping file** (`prebuilt_prds/confluence-mapping.json`) — after the page exists, keep the record in sync. Do **not** rewrite the file on every publish.
+### 8–10. Write Confluence only if still different
 
-| Situation | Mapping file |
-|-----------|----------------|
-| Page exists and the mapped page id is already this page | Leave the file unchanged |
-| Page exists but the mapped id is different (or the mapped id 404s) | Update that key to the page id just published |
-| No record for this PRD | Add one key after create (or after first find) |
+After compare (Change Log / Last updated already auto-resolved to the most latest on local), if local content matches the Confluence PRD content (ignoring wiki chrome, the Change Log row this publish would add, Header → Confluence, Header → Jira, and skip-review Header Figma / API Spec `N / A` vs wiki `TBD`): **skip** the content write except (1) a Header Figma / API Spec `N / A` write when wiki is still `TBD` and (2) a Change Log / Last updated write when wiki is still older than local after auto-resolve (no extra ask; **no** Change Log row if that is the only body change besides Header → Confluence). Tell the user it already matches. **Still run Header → Confluence fill** (below). If that fill changes local or the wiki is missing the row / has the wrong id: update the page; **no** Change Log row for a URL-only fill. Do **not** fill Header → Jira from the AIDR board.
 
-Key format: `prebuilt-prds/<filename>.md` → Confluence page id string. See [publish-to-confluence.md](reference/publish-to-confluence.md) Confluence mapping.
+If it still differs, or there is no page yet, follow [reference/publish-to-confluence.md](reference/publish-to-confluence.md):
 
-**Inline comments:** Before updating an existing page, check `getConfluencePageInlineComments`. If any exist, **do not** overwrite the body with markdown (that orphans comments as “content was deleted”). Prefer HTML fetch → edit → update with `contentFormat="html"`, or ask the user first. See [publish-to-confluence.md](reference/publish-to-confluence.md) Body rules.
+- Rewrite Header Links to Confluence URLs (never local files)
+- Append **one** §1 Change Log row, then publish that body
+- Create **or** update (never duplicate)
+- **Always** run Header → Confluence fill after the page exists (required — do not skip). Do **not** fill Header → Jira from the AIDR board.
+- First publish: create the page, then fill Header → Confluence from the new `webUrl` / page id, then **update** the page so the wiki body has the link
+- Preserve remaining **open inline** comments (HTML update, not a markdown overwrite that drops them). Page-level comments are not body-anchored.
+- Return this PRD’s URL in chat
 
-**Change Log (required before Confluence write):** After destination is known and gates still pass, append **one** §1 row to the local PRD, then publish that body:
+Do **not** return success while Header → Confluence is empty, `TBD`, `N / A`, or missing on the **local** file or the **wiki** body.
+
+**Change Log (required before Confluence write when writing):**
 
 | Date | Change | Owner | Rationale |
 |------|--------|-------|-----------|
@@ -158,17 +224,61 @@ Key format: `prebuilt-prds/<filename>.md` → Confluence page id string. See [pu
 - Later publishes → Change = `Updated on Confluence` (plus brief note if useful)
 - Do **not** add Change Log rows from `generate-prd` or other local-only edits. `design-prd-consistency` may already have added `Updated from design` rows — keep those.
 
+**Republish rule:** If search finds the same PRD title/id, use **`updateConfluencePage`**. Never create a duplicate page for the same PRD.
+
+**Header → Confluence (required — local and wiki, after the page exists):**
+
+Shape: `[PRD: <H1 title>](<webUrl>)`. Row sits **below Figma**. Add the row if missing.
+
+This is a **post-condition**, not optional. Run it on every PRD in the run, including skip-if-match.
+
+| Situation | Action |
+|-----------|--------|
+| First publish (new page) | After `createConfluencePage`, write the URL into **local** Header → Confluence, then `updateConfluencePage` so the wiki body has the same link |
+| Local cell empty / `TBD` / `N / A` / missing row | Write the current page URL into **local**, then update the wiki body |
+| Wiki body missing the row, or wiki cell empty / `TBD` / `N / A` | Update the wiki body with the current page URL (write local first if needed) |
+| Page id in the cell ≠ current page id | Replace local and wiki with the current page URL |
+| Local and wiki both already have this page’s URL (same page id) | Leave the cell unchanged |
+
+Do **not** put this PRD’s own page URL in Header → Links.
+
+**Done check:** local Header → Confluence is a real page URL for **this** page, and the wiki Header shows the same. If not: fill and update; do not finish.
+
+**Header → Jira (not filled — local and wiki):**
+
+Leave `—` unless the user gave a ticket. Do **not** write a PRD / Design / Implementation list. Do **not** search the AIDR board to populate this field. Ticket linking by slot can be added later. See [reference/fill-header-jira.md](reference/fill-header-jira.md).
+
+If the row is missing, add it below Confluence with `—`. Do **not** treat an existing three-line wiki cell as something this skill must keep or rewrite on skip-if-match. A normal content write uses the local cell as-is.
+
+**Comments:** Before updating an existing page, check **open** page-level and inline comments (compare child already walked them). If any **open inline** comments remain, **do not** overwrite the body with markdown. Prefer HTML fetch → edit → update with `contentFormat="html"`, or ask the user first. **Resolve** during compare closes the comment on Confluence; it does not delete it.
+
+### 11. Commit and push (same `publish-prd` run)
+
+After all PRDs in this run have finished Confluence work, follow [children/commit-and-push/SKILL.md](children/commit-and-push/SKILL.md).
+
+- Confluence first, git second
+- Commit only the PRD files this run changed
+- Push to `origin` (`https://github.com/nandong-tech/product-management.git`). If origin is missing, ask for the remote URL
+- Do **not** skip git because Confluence was skipped as a match, if local still changed from the compare or from a Header → Confluence fill
+- Do **not** commit if Confluence write failed
+- Git never writes Confluence
+
+**Catalog summary (required when more than one PRD):** before git, list each file as created / updated / matched / blocked (product TBD) with the Confluence URL when a page exists.
+
 ## Related parent skills
 
 - `generate-prd` — create/update local PRDs (does not publish; leaves §1 Change Log empty)
 - `design-prd-consistency` — design-driven local update; may add an `Updated from design` §1 row (does not publish)
-- `review-prd` — **required** before publish
+- `review-prd` — optional during publish; run only when the user says Yes at the review ask
 - `relate-prds` — map PRD links
 
 ## Additional resources
 
+- Compare child (internal): [children/compare-confluence/SKILL.md](children/compare-confluence/SKILL.md)
+- Commit/push child (internal): [children/commit-and-push/SKILL.md](children/commit-and-push/SKILL.md)
 - Publish steps: [reference/publish-to-confluence.md](reference/publish-to-confluence.md)
-- Page ids: [../../prebuilt_prds/confluence-mapping.json](../../prebuilt_prds/confluence-mapping.json)
-- Space suggestions: [config/confluence-projects.md](config/confluence-projects.md)
+- Header Jira (deferred): [reference/fill-header-jira.md](reference/fill-header-jira.md)
+- Space / Jira board: [config/confluence-projects.md](config/confluence-projects.md)
 - Review skill: [../review-prd/SKILL.md](../review-prd/SKILL.md)
 - Invocation: [../shared/invocation.md](../shared/invocation.md)
+- Example run: [examples/publish-run.md](examples/publish-run.md)

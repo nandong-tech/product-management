@@ -9,13 +9,9 @@ Edit this file so **`publish-prd`** can suggest Confluence spaces. Suggestions o
 | TEST | Flow-test PRDs | ~62c27c6c5f45f3d3b7b5ec9d | 3906764803 | | Nan Dong personal space — smoke tests only; do not use for real PRDs |
 | | | | | | |
 
-## Published PRD page ids
-
-Catalog PRD → Confluence page id: [`../../../prebuilt_prds/confluence-mapping.json`](../../../prebuilt_prds/confluence-mapping.json). `publish-prd` reads this when resolving an existing page. After publish it adds a key if missing, or updates the key if the page id changed. If the page id is already correct, it does not write the file.
-
 ## Header Links (canonical Confluence URLs)
 
-`generate-prd` and `publish-prd` must use these **Confluence** URLs in Header → Links — **never** local `.md` / `.cursor/` paths. `publish-prd` rewrites any leftover local-file Header Links to these URLs before writing the body. Do **not** put a PRD’s **own** page URL into that PRD’s Header Links.
+`generate-prd` and `publish-prd` must use these **Confluence** URLs in Header → Links — **never** local `.md` / `.cursor/` paths. `publish-prd` rewrites any leftover local-file Header Links to these URLs before writing the body. Put a PRD’s **own** page URL in Header → **Confluence**, not in Header Links.
 
 | artifact | confluence_page_id | url |
 |----------|--------------------|-----|
@@ -54,3 +50,16 @@ Atlassian site / cloudId is resolved at publish time via Atlassian MCP (`getAcce
 |---------|-------|
 | `atlassian_site_url` | https://lotusflare.atlassian.net |
 | `cloudId` | e91ffda2-253d-436c-84e1-bdf5229fbbca |
+
+## Jira (deferred)
+
+Board ids are kept for later ticket linking. **`publish-prd` does not fill Header → Jira from this board.** Header Jira stays `—` unless the user gives a ticket. Do **not** write PRD / Design / Implementation slots. See [../reference/fill-header-jira.md](../reference/fill-header-jira.md).
+
+| Setting | Value |
+|---------|-------|
+| `jira_site_url` | https://lotusflare.atlassian.net |
+| `jira_project_key` | AIDR |
+| `jira_board_id` | 7960 |
+| `jira_board_url` | https://lotusflare.atlassian.net/jira/software/c/projects/AIDR/boards/7960 |
+| `jira_issue_url` | https://lotusflare.atlassian.net/browse/{KEY} |
+

@@ -17,7 +17,8 @@
 | Created | |
 | Last updated | |
 | Figma | |
-| Jira | |
+| Confluence | |
+| Jira | — |
 | API Spec | |
 | Links (optional) | shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |
 

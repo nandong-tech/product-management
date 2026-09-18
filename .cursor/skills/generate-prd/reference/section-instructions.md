@@ -52,7 +52,8 @@ Fill metadata for ownership, status, and links. Status should reflect the **owni
 | Contributors | **PRD authors only** — PM name(s) who wrote or edited **this** PRD doc. On create: same as the PM who authored it (often same as Owner). On later edits by another PM: **append** that name (do not remove prior contributors). Not Design/Eng/Legal roles. |
 | Created / Last updated | `YYYY-MM-DD` |
 | Figma | Team-viewable design link **attached separately** for the PRD. Do **not** auto-fill from the URL/screenshot/export the user used as generation input; leave empty / `TBD` until they attach a dedicated Header Figma |
-| Jira | Tickets |
+| Confluence | This PRD’s own Confluence page. `generate-prd` leaves `TBD`. `publish-prd` writes `[PRD: <H1 title>](<webUrl>)` after the page exists. Do **not** put this URL in Header Links |
+| Jira | Leave `—` unless the user gives a ticket. Do **not** split into PRD / Design / Implementation. Do **not** put tickets in Header Links |
 | API Spec | Operation YAML attached by **`api-mapping`** only when that YAML is the correct API (match) — markdown link relative to the PRD, e.g. `[catalog-get-offers.yaml](../data_mappings/catalog-get-offers.yaml)`. Leave `N / A` until then. Not a Swagger UI URL. |
 | Links (optional) | **Only** these: always `shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules)`; plus `page template: [Name (ID)](Confluence URL)` when the screen uses a page template (authoring-rules §2g). Use canonical Confluence URLs from publish-prd config — **never** local `.md` paths. Do **not** put this PRD’s own page URL, `pending-prd-links.md` / Pending destinations, or other links here. Do not copy §5–6 hand-off destinations into this field. |
 

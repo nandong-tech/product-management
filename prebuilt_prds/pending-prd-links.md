@@ -153,7 +153,9 @@ Track hand-offs whose destination PRDs are **not written yet**. When those PRDs 
 | LF-S-005 | Back | Welcome (LF-S-001) | Exists | Already noted in §3e; optional Header Links later |
 | LF-S-004 | **Not your number?** | Previous screen (e.g. LF-S-005 from activation) | Depends on calling flow | Keep generic + example ID when known |
 | LF-S-055 | **User Profile** | User Profile (PRD TBD) | Not written yet | Add PRD ID in LF-S-055 when written |
-| LF-S-055 | **Transaction History** | Transaction History (PRD TBD) | Not written yet | Add PRD ID in LF-S-055 when written |
+| LF-S-055 | **Transaction History** | Transaction History (LF-J-015) | Exists | Optional Header Links / `relate-prds` |
+| LF-J-015 | User selects **Transaction History** on My Account Home (LF-S-055) | Transaction History (LF-S-056) | Exists | Journey entry |
+| LF-S-056 | Select a transaction | Order Details (LF-S-057) | Exists | Optional Header Links / `relate-prds` |
 | LF-S-055 | **SIM Swap** | SIM Swap (PRD TBD) | Not written yet | Swap journey PRD TBD |
 | LF-S-055 | **Port in** | Port in (PRD TBD) | Not written yet | Port-in journey PRD TBD |
 
