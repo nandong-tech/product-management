@@ -5,6 +5,7 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
+| 2026-09-18 | Updated on Confluence | Nan Dong | Forgot PIN? takes the user to Forgot PIN |
 | 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
 | 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 | 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
@@ -21,7 +22,7 @@
 | Owner (PM)           | Nan Dong                                                                         |
 | Contributors         | Nan Dong                                                                         |
 | Created              | 2026-08-12                                                                       |
-| Last updated         | 2026-09-11 |
+| Last updated         | 2026-09-18 |
 | Figma                | N / A                                                                              |
 | Confluence           | [PRD: LF-S-016 - Login](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676657731/PRD+LF-S-016+-+Login) |
 | Jira                 | —                                                                                |
@@ -86,7 +87,7 @@ N / A
 | AC-02 | The login screen is shown | The user enters a value in the PIN entry | Only numbers can be entered; non-number characters are not accepted; at most 6 digits |
 | AC-03 | The login screen is shown | The user enters a registered mobile number and the correct 6-digit PIN for that number, the email for that account is verified, and the user selects **Log in** | - The user is taken to Dashboard (LF-S-033)<br>- The user is logged out on every other device |
 | AC-04 | The login screen is shown | The user selects the back arrow | The user is taken to Welcome (LF-S-001) |
-| AC-05 | The login screen is shown and the user has entered a mobile number | The user clicks **Forgot PIN?** | - An OTP is sent to that mobile number<br>- The user is taken to OTP verification (LF-S-004) and starts Forgot PIN (LF-J-006) |
+| AC-05 | The login screen is shown and the user has entered a mobile number | The user clicks **Forgot PIN?** | The user is taken to Forgot PIN (LF-J-006) |
 
 
 
