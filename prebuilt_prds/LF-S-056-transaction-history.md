@@ -5,9 +5,6 @@
 
 | Date       | Change                      | Owner    | Rationale                               |
 | ---------- | --------------------------- | -------- | --------------------------------------- |
-| 2026-09-16 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
-| 2026-09-17 | Updated on Confluence       | Nan Dong | Take wiki AC-02; AC-01 transactions wording |
-| 2026-09-18 | Updated on Confluence       | Nan Dong | AC-07 Order Details; take wiki AC-02 |
 
 
 ## 2. Header

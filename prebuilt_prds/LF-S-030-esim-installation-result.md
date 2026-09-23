@@ -5,9 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 
 ## 2. Header

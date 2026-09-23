@@ -5,14 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-11 | Updated on Confluence | Nan Dong | Design and handoff walkthrough updates |
-| 2026-09-11 | Updated from design | Nan Dong | Name and email errors run when the user leaves the field |
-| 2026-09-11 | Updated from design | Nan Dong | Leave-and-return keeps values only in the same create-account attempt |
-| 2026-09-11 | Updated from design | Nan Dong | Enter account details title and email error copy |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-17 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 ## 2. Header
 

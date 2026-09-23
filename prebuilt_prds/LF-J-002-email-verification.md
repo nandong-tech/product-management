@@ -5,12 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-18 | Updated on Confluence | Nan Dong | OTP mermaid continues with Next |
-| 2026-09-11 | Updated from design | Nan Dong | OTP continues with Next |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-17 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 ## 2. Header
 
@@ -23,7 +17,7 @@
 | Owner (PM)           | Nan Dong           |
 | Contributors         | Nan Dong           |
 | Created              | 2026-08-12         |
-| Last updated         | 2026-09-18  |
+| Last updated         | 2026-09-22  |
 | Figma                | N / A                |
 | Confluence           | [PRD: LF-J-002 - Email Verification](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7692091431/PRD+LF-J-002+-+Email+Verification) |
 | Jira                 | —                  |
@@ -45,7 +39,7 @@ The email verification journey is where the user verifies the email used at regi
 
 ### c. Non-Goals
 
-- Field-level rules on each screen (owned by OTP verification (LF-S-004), Verify email (LF-S-013), Edit email (LF-S-014), and Email verification result (LF-S-015))
+- Field-level rules on each screen (owned by Enter verification code (LF-S-004), Verify email (LF-S-013), Edit email (LF-S-014), and Email verification result (LF-S-015))
 
 
 
@@ -55,6 +49,7 @@ The email verification journey is where the user verifies the email used at regi
 | Entry point                                              | In or out of scope? | Note                                                 |
 | -------------------------------------------------------- | ------------------- | ---------------------------------------------------- |
 | User selects **Next** on Activation — success (LF-S-012) | In                  | Starts email verification at Verify email (LF-S-013) |
+| User selects **Got it** on **Email not verified** on Login (LF-S-016) | In | Starts email verification at Verify email (LF-S-013) |
 
 
 
@@ -70,7 +65,8 @@ The email verification journey is where the user verifies the email used at regi
 ```mermaid
 flowchart TD
   start([User selects Next on Activation — success LF-S-012]) --> verifyEmail[Verify email LF-S-013]
-  verifyEmail -->|Not your email| otp[OTP verification LF-S-004]
+  startLogin([User selects Got it on Email not verified on Login LF-S-016]) --> verifyEmail
+  verifyEmail -->|Not your email| otp[Enter verification code LF-S-004]
   otp -->|Correct OTP + Next| editEmail[Edit email LF-S-014]
   otp -->|Not your number| verifyEmail
   editEmail -->|Save when verification email can be sent| verifyEmail

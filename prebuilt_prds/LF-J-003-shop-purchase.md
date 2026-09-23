@@ -5,11 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-18 | Updated on Confluence | Nan Dong | OTP mermaid continues with Next |
-| 2026-09-11 | Updated from design | Nan Dong | OTP continues with Next |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 
 ## 2. Header
@@ -78,7 +73,7 @@ flowchart TD
   esimCheck -->|Next| checkout
   cart -->|Checkout — otherwise| checkout
   checkout -->|Guest eSIM — Fill in your details or Edit Send to| fillInfo[eSIM purchase fill info LF-S-024]
-  fillInfo -->|Next — OTP sent to email| otp[OTP verification LF-S-004]
+  fillInfo -->|Next — OTP sent to email| otp[Enter verification code LF-S-004]
   otp -->|Correct OTP + Next| checkout
   checkout -->|Logged-in Physical SIM — Edit or add your address| savedAddrMgmt[Saved address management LF-J-004]
   savedAddrMgmt -->|Select a saved address| checkout

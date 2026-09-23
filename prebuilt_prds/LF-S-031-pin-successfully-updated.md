@@ -5,9 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 
 ## 2. Header
@@ -21,8 +18,8 @@
 | Owner (PM)           | Nan Dong                                                                                           |
 | Contributors         | Nan Dong                                                                                           |
 | Created              | 2026-08-31                                                                                         |
-| Last updated         | 2026-09-10 |
-| Figma                | N / A |
+| Last updated         | 2026-09-21 |
+| Figma                | [Prebuilt Page Templates — PIN Successfully Updated](https://www.figma.com/design/X3GsrESJS5Ygq67qI0GJ8D/Prebuilt-Page-Templates?node-id=186-14167) |
 | Confluence           | [PRD: LF-S-031 - PIN Successfully Updated](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7747666028/PRD+LF-S-031+-+PIN+Successfully+Updated) |
 | Jira                 | —                                                                                                  |
 | API Spec             | N / A                                                                                              |

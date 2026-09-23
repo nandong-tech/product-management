@@ -5,11 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-18 | Updated on Confluence | Nan Dong | OTP mermaid continues with Next |
-| 2026-09-11 | Updated from design | Nan Dong | OTP continues with Next |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 
 ## 2. Header
@@ -23,8 +18,8 @@
 | Owner (PM)           | Nan Dong   |
 | Contributors         | Nan Dong   |
 | Created              | 2026-08-31 |
-| Last updated         | 2026-09-18  |
-| Figma                | N / A      |
+| Last updated         | 2026-09-21 |
+| Figma                | [Prebuilt Page Templates — Forgot PIN](https://www.figma.com/design/X3GsrESJS5Ygq67qI0GJ8D/Prebuilt-Page-Templates?node-id=182-10061) |
 | Confluence           | [PRD: LF-J-006 - Forgot PIN](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7747403846/PRD+LF-J-006+-+Forgot+PIN) |
 | Jira                 | —          |
 | API Spec             | N / A      |
@@ -59,8 +54,8 @@ N / A
 
 ```mermaid
 flowchart TD
-  startLogin([User clicks Forgot PIN? on Login LF-S-016]) --> otp[OTP verification LF-S-004]
-  startReset([User clicks Forgot PIN? on Enter Existing PIN LF-S-032]) --> otp
+  startLogin([User clicks Forgot PIN? on Login LF-S-016]) -->|OTP sent| otp[Enter verification code LF-S-004]
+  startReset([User clicks Forgot PIN? on Enter Existing PIN LF-S-032]) -->|OTP sent| otp
   otp -->|Correct OTP + Next| pin[PIN entering LF-S-006]
   otp -->|Not your number from Login| loginBack[Login LF-S-016]
   pin -->|Matching strong PIN + Next, user is logged out| success[PIN Successfully Updated LF-S-031]

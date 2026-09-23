@@ -4,7 +4,6 @@
 
 | Date | Change | Owner | Rationale |
 |------|--------|-------|-----------|
-| 2026-09-18 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 ## 2. Header
 
@@ -16,8 +15,8 @@
 | Owner (PM) | Nan Dong |
 | Contributors | Nan Dong |
 | Created | 2026-09-18 |
-| Last updated | 2026-09-18 |
-| Figma | N / A |
+| Last updated | 2026-09-22 |
+| Figma | [Prebuilt Page Templates — Login](https://www.figma.com/design/X3GsrESJS5Ygq67qI0GJ8D/Prebuilt-Page-Templates?node-id=182-7503) |
 | Confluence | [PRD: LF-J-016 - Login](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7827816774/PRD+LF-J-016+-+Login) |
 | Jira | — |
 | API Spec | N / A |
@@ -52,7 +51,10 @@ flowchart TD
   startWelcome([User selects Log in on Welcome LF-S-001]) --> login[Login LF-S-016]
   startHeader([User selects Log in in Header LF-S-002]) --> login
   login -->|Registered number + correct PIN + email verified + Log in| dashboard([Dashboard LF-S-033])
-  login -->|Forgot PIN?| forgotPin[Forgot PIN LF-J-006]
+  login -->|Forgot PIN? + OTP sent| forgotPin[Forgot PIN LF-J-006]
+  login -->|Create an account| createAccount([Create account LF-J-001 at Activation — enter number LF-S-005])
+  login -->|Email not verified — Got it| emailVerification([Email verification LF-J-002 at Verify email LF-S-013])
+  login -->|Number ported out — Got it| login
 ```
 
 ## 5. Acceptance Criteria

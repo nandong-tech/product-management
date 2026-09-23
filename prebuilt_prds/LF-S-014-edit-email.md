@@ -5,11 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-11 | Updated from design | Nan Dong | OTP continues with Next |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-17 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 ## 2. Header
 
@@ -47,14 +42,14 @@ The edit-email screen is where the user enters a new email address and saves it,
 
 | Entry point | In or out of scope? | Note |
 |-------------|---------------------|------|
-| User selects **Next** after entering the correct code on OTP verification (LF-S-004) after **Not your email?** on Verify email (LF-S-013) | In | From LF-S-004 in email verification (LF-J-002) |
+| User selects **Next** after entering the correct code on Enter verification code (LF-S-004) after **Not your email?** on Verify email (LF-S-013) | In | From LF-S-004 in email verification (LF-J-002) |
 
 ### e. Exit points
 
 | Exit point | In or out of scope? | Note |
 |------------|---------------------|------|
 | User selects **Save** and a new verification email can be sent | In | Verify email (LF-S-013). Uses the same five-minute window and 3-sends-in-24-hours limit as Verify email (LF-S-013) and Email verification result (LF-S-015) — expired link. |
-| User selects **Cancel** | In | Verify email (LF-S-013) — the screen before OTP verification in this journey |
+| User selects **Cancel** | In | Verify email (LF-S-013) — the screen before Enter verification code in this journey |
 
 ## 4. User Journey
 

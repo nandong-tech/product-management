@@ -5,12 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-11 | Updated on Confluence | Nan Dong | Design and handoff walkthrough updates |
-| 2026-09-11 | Updated from design | Nan Dong | Title, reminder, and eligibility copy from design |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-17 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 ## 2. Header
 
@@ -64,7 +58,7 @@ N / A
 | --- | --- | --- | --- |
 | AC-01 | The enter-number screen is shown | The user views the screen | - Title "Enter mobile number" is shown<br>- The mobile number field is shown<br>- **Next** is shown<br>- **Where can I find this?** is shown and can be clicked<br>- "Make sure your SIM is ready. Physical SIM: Insert it. eSIM: Set it up on your device." is shown |
 | AC-02 | The enter-number screen is shown | The user clicks **Where can I find this?** | - Find-number help is shown with **pSIM** and **eSIM**<br>- **pSIM** (default): image of the SIM bed with the number location indicated, and "Your number can be found on the top portion of your SIM bed."<br>- **eSIM**: image of the order confirmation / eSIM voucher with the number location indicated, and "The number can be found in the order confirmation sent to your email upon purchase."<br>- **Got it** closes the help and returns to the enter-number screen |
-| AC-03 | The enter-number screen is shown | The user enters a valid mobile number whose state is correct for activation and selects **Next** | The user is taken to OTP verification (LF-S-004) |
+| AC-03 | The enter-number screen is shown | The user enters a valid mobile number whose state is correct for activation and selects **Next** | The user is taken to Enter verification code (LF-S-004) |
 
 
 ## 6. Edge cases & error cases

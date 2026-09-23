@@ -5,9 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 
 ## 2. Header
@@ -64,7 +61,7 @@ N / A
 | AC-01 | The eSIM purchase fill-info screen is shown and the user is not logged in | The user views the screen | - Page title "Fill in your details" is shown<br>- Helper text "All fields with * are required." is shown<br>- **First Name** is shown and is required<br>- **Last Name** is shown and is required<br>- **Email** is shown and is required<br>- **Mobile Number** is shown and is required; the number uses the shared MSISDN format<br>- **Next** is shown and can be selected |
 | AC-02 | The eSIM purchase fill-info screen is shown, the user is not logged in, and the user selected **Fill in your details** on Checkout (LF-S-021) | The user views the screen | The shown **First Name**, **Last Name**, **Email**, and **Mobile Number** fields are shown empty |
 | AC-03 | The eSIM purchase fill-info screen is shown, the user is not logged in, and the user selected **Edit** on **Send to** on Checkout (LF-S-021) | The user views the screen | The shown **First Name**, **Last Name**, **Email**, and **Mobile Number** fields are filled from the eSIM purchase details. The user can change them |
-| AC-04 | The eSIM purchase fill-info screen is shown, the user is not logged in, and all details validation has passed | The user selects **Next** | - Leading and trailing spaces on **First Name** and **Last Name** are trimmed silently<br>- An OTP is sent to the **Email** the user entered<br>- The user is taken to OTP verification (LF-S-004) |
+| AC-04 | The eSIM purchase fill-info screen is shown, the user is not logged in, and all details validation has passed | The user selects **Next** | - Leading and trailing spaces on **First Name** and **Last Name** are trimmed silently<br>- An OTP is sent to the **Email** the user entered<br>- The user is taken to Enter verification code (LF-S-004) |
 
 
 ## 6. Edge cases & error cases

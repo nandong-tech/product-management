@@ -4,7 +4,6 @@
 
 | Date | Change | Owner | Rationale |
 |------|--------|-------|-----------|
-| 2026-09-18 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 ## 2. Header
 

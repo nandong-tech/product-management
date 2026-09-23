@@ -5,14 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-11 | Updated on Confluence | Nan Dong | Design and handoff walkthrough updates |
-| 2026-09-11 | Updated from design | Nan Dong | Unsupported file type copy matches design |
-| 2026-09-11 | Updated from design | Nan Dong | Leave-and-return keeps the file only in the same create-account attempt |
-| 2026-09-11 | Updated from design | Nan Dong | Verify identity title and upload copy |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-17 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 ## 2. Header
 

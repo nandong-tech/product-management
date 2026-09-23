@@ -5,9 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | First publish to Confluence | Nan Dong | Initial publish to Prebuilt PRDs folder |
 
 
 ## 2. Header
@@ -21,7 +18,7 @@
 | Owner (PM)           | Nan Dong  |
 | Contributors         | Nan Dong  |
 | Created              | 2026-08-31 |
-| Last updated         | 2026-09-10  |
+| Last updated         | 2026-09-21 |
 | Figma                | N / A     |
 | Confluence           | [PRD: LF-J-007 - Reset PIN](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7748878364/PRD+LF-J-007+-+Reset+PIN) |
 | Jira                 | —         |
@@ -59,7 +56,7 @@ N / A
 ```mermaid
 flowchart TD
   start([User selects Reset PIN in My Account menu on Header LF-S-002]) --> currentPin[Enter Existing PIN LF-S-032]
-  currentPin -->|Forgot PIN?| forgot([Forgot PIN LF-J-006])
+  currentPin -->|Forgot PIN? + OTP sent| forgot([Forgot PIN LF-J-006])
   currentPin -->|Correct existing PIN| pin[PIN entering LF-S-006]
   pin -->|Matching strong PIN + Next, user is logged out| success[PIN Successfully Updated LF-S-031]
   success -->|Log in| login([Login LF-S-016])

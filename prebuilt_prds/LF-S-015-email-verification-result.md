@@ -5,9 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 
 ## 2. Header
@@ -21,7 +18,7 @@
 | Owner (PM)           | Nan Dong                                                                                           |
 | Contributors         | Nan Dong                                                                                           |
 | Created              | 2026-08-11                                                                                         |
-| Last updated         | 2026-09-11 |
+| Last updated         | 2026-09-22 |
 | Figma                | N / A |
 | Confluence           | [PRD: LF-S-015 - Email Verification Result](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676657709/PRD+LF-S-015+-+Email+Verification+Result) |
 | Jira                 | —                                                                                                  |
@@ -62,7 +59,7 @@ N / A
 | ID    | Given                                                                       | When                        | Then                                                                                                                                                                                                                                                                                                               |
 | ----- | --------------------------------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | AC-01 | The email verification result screen is shown for a successful verification | The user views the screen   | - Log the current user out, even if that log-in is for a different account than the verification link<br>- Title "Email successfully verified" is shown<br>- Text "You're good to go! Kindly log in again so you can track and convert your data into awesome deals!" is shown<br>- **Log in** is shown and can be selected |
-| AC-02 | The email verification result screen is shown for a successful verification | The user selects **Log in** | The user is taken to Login (LF-S-019)                                                                                                                                                                                                                                                                              |
+| AC-02 | The email verification result screen is shown for a successful verification | The user selects **Log in** | The user is taken to Login (LF-S-016)                                                                                                                                                                                                                                                                              |
 
 
 ## 6. Edge cases & error cases

@@ -5,15 +5,6 @@
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-11 | Updated on Confluence | Nan Dong | Design and handoff walkthrough updates |
-| 2026-09-11 | Updated from design | Nan Dong | Mermaid start includes Header Activate your SIM |
-| 2026-09-11 | Updated from design | Nan Dong | Restart from Activate your SIM starts blank at enter number |
-| 2026-09-11 | Updated from design | Nan Dong | OTP continues with Next |
-| 2026-09-10 | Updated from design | Nan Dong | Review CTA is Create account; attached Create Account Figma |
-| 2026-09-10 | Updated on Confluence | Nan Dong | Header Links: Confluence URLs for shared context and page template |
-| 2026-09-09 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-31 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
-| 2026-08-17 | Updated on Confluence | Nan Dong | Overwrite Prebuilt PRDs folder from local catalog |
 
 ## 2. Header
 
@@ -50,7 +41,7 @@ The create-account journey is where the user activates their SIM and registers a
 
 ### c. Non-Goals
 
-- Field-level rules on each screen (owned by OTP verification (LF-S-004) and Activation screens (LF-S-005–LF-S-012))
+- Field-level rules on each screen (owned by Enter verification code (LF-S-004) and Activation screens (LF-S-005–LF-S-012))
 
 
 
@@ -82,7 +73,7 @@ The create-account journey is where the user activates their SIM and registers a
 flowchart TD
   startWelcome([User selects Activate your SIM on Welcome LF-S-001]) --> enterNumber[Activation — enter number LF-S-005]
   startHeader([User selects Activate your SIM in Header LF-S-002]) --> enterNumber
-  enterNumber -->|Valid number + Next| otp[OTP verification LF-S-004]
+  enterNumber -->|Valid number + Next| otp[Enter verification code LF-S-004]
   otp -->|Correct OTP + Next| pin[PIN entering LF-S-006]
   otp -->|Not your number| enterNumber
   pin -->|Matching strong PIN + Next| details[Activation — account details LF-S-007]
