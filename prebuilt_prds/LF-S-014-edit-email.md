@@ -1,63 +1,64 @@
 # PRD: LF-S-014 - Edit Email
 
-## 1. Change Log
-
+## Change Log
 
 | Date | Change | Owner | Rationale |
 | ---- | ------ | ----- | --------- |
-| 2026-09-28 | Migrated to the Header-only PRD template (Decision-66 · PRDs carry no frontmatter) | aidr-conform-prebuilt.sh | Version 1 did not track edits; content changed since v1 without a record |
 
-## 2. Header
+## Header
 
 | Field | Value |
-|-------|-------|
+| --- | --- |
 | Feature | Edit Email |
 | Channels | App + Web |
 | Status (owning team) | PM — drafting |
-| Owner (PM) | Nan Dong |
-| Contributors | Nan Dong |
+| Gaps | none |
+| Version | 1 |
 | Created | 2026-08-11 |
 | Last updated | 2026-10-15 |
+| Owner (PM) | Nan Dong |
+| Contributors | Nan Dong |
 | Figma | [Prebuilt Page Templates — Edit Email](https://www.figma.com/design/X3GsrESJS5Ygq67qI0GJ8D/Prebuilt-Page-Templates?node-id=322-14886) |
-| Confluence| [PRD: LF-S-014 - Edit Email](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676821556/PRD+LF-S-014+-+Edit+Email) |
+| API Spec(s) | N / A |
 | Jira | — |
-| API Spec | N / A |
+| Confluence | [PRD: LF-S-014 - Edit Email](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676821556/PRD+LF-S-014+-+Edit+Email) |
 | Links (optional) | page template: [Basic page template (LF-P-001)](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7676821534/PRD+LF-P-001+-+Basic+Page+Template)<br>shared context: [Shared general context](https://lotusflare.atlassian.net/wiki/spaces/AIDR/pages/7693467649/Shared+general+context+product-wide+rules) |
-## 3. Central requirement + Scope
 
-### a. Central requirement
+## Central requirement + Scope
+
+### Central requirement
 
 The edit-email screen is where the user enters a new email address and saves it, which sends a new verification email when allowed.
 
-### b. Goals
+### Goals
 
 - Enter a new email address
 - Save the new email address and send a new verification email when allowed
 
-### c. Non-Goals
+### Non-Goals
 
 - Verify email after **Save** (destination content and behavior)
 
-### d. Entry points
+### Entry points
 
 N / A
 
-### e. Exit points
+### Exit points
 
 N / A
 
-## 4. User Journey
+## User Journey
 
 N / A
 
-## 5. Acceptance Criteria
+## Acceptance Criteria
 
 | ID | Given | When | Then |
 | --- | --- | --- | --- |
-| AC-01 | The edit-email screen is shown | The user views the screen | - Title "Edit email" is shown<br>- **Email** field is shown empty<br>- **Save** is shown and can be selected |
+| AC-01 | The edit-email screen is shown | The user views the screen | - Title "Edit email" is shown<br>- **Email** is shown, prepopulated with the email from the previous step<br>- **Save** is shown and can be selected |
 | AC-02 | The edit-email screen is shown, the five-minute countdown has ended, and the user has been sent fewer than 3 verification emails | The user enters a correctly formatted email that is different from their current email (at most 254 characters) and selects **Save** | - The user's email is updated to the entered email<br>- A new verification link is sent to the entered email<br>- The user is taken to Verify email (LF-S-013) |
 
-## 6. Edge cases & error cases
+## Edge cases & error cases
 
 | ID | Case (category) | Trigger / entry | Expected behavior (observable) | Exit / recovery |
 | --- | --- | --- | --- | --- |
@@ -67,6 +68,6 @@ N / A
 | EC-04 | Error — verification email within five-minute window | The user enters a correctly formatted email that is different from their current email (at most 254 characters) and selects **Save** while a verification email was already requested within the last five minutes | - The user's email is updated to the entered email<br>- A new verification link is not sent<br>- Title "Verification email already requested" is shown<br>- Message "Sorry, you've already requested a verification email. Please request again in 5 minutes." is shown<br>- **Got it** is shown | **Got it** closes the message and the user stays on the edit-email screen |
 | EC-05 | Error — max verification email requests | The user enters a correctly formatted email that is different from their current email (at most 254 characters) and selects **Save** when the user has already been sent a verification email 3 times | - The user's email is updated to the entered email<br>- A new verification link is not sent<br>- Title "Maximum requests reached" is shown<br>- Message "Sorry, you've reached the maximum number of requests. You can request a new one again tomorrow or after 24 hours." is shown<br>- **Got it** is shown | **Got it** closes the message and the user stays on the edit-email screen |
 
-## 7. Data Mapping
+## Data Mapping
 
 N / A
